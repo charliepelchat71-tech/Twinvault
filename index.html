@@ -1,9 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<title>Twinvault</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twinvault - Marketplace Moderne</title>
+    <style>
+        :root {
+            --primary: #6B46C1; /* Mauve */
+            --secondary: #3182CE; /* Bleu */
+            --dark: #1A202C;
+            --light: #F7FAFC;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card-title {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .card-price {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to Twinvault</h1>
+    <header>
+        <h1>Bienvenue sur Twinvault</h1>
+        <p>Votre place de marché moderne</p>
+    </header>
+    <div class="container">
+        <h2>Nos Articles</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/250" alt="Meuble">
+                <div class="card-content">
+                    <h3 class="card-title">Fauteuil Moderne</h3>
+                    <p class="card-price">150 $</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250" alt="Télévision">
+                <div class="card-content">
+                    <h3 class="card-title">Télévision 4K</h3>
+                    <p class="card-price">500 $</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250" alt="Table">
+                <div class="card-content">
+                    <h3 class="card-title">Table en bois</h3>
+                    <p class="card-price">80 $</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
