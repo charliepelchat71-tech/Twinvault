@@ -159,6 +159,9 @@
             text-decoration: none;
             font-weight: bold;
             transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
         }
 
         .view-btn:hover {
@@ -319,7 +322,6 @@
             <div class="main-container">
                 <button onclick="showSection('home')" class="view-btn" style="width: 150px; margin-bottom: 1rem;">Retour</button>
                 <div class="product-card">
-                    <!-- Model Viewer Component -->
                     <model-viewer 
                         id="product-model"
                         src="" 
@@ -337,7 +339,7 @@
                         <h3 id="detail-title" class="product-title">Nom du produit</h3>
                         <p id="detail-seller" class="product-seller">Vendu par : Vendor</p>
                         <div id="detail-price" class="product-price">0 $</div>
-                        <a href="#" id="detail-vendor-link" target="_blank" class="view-btn" style="margin-top: 1rem;">Visiter le site du vendeur</a>
+                        <button class="view-btn" onclick="showSection('profil')" style="margin-top: 1rem;">Profil du vendeur</button>
                     </div>
                 </div>
             </div>
@@ -394,7 +396,6 @@
     </div>
 
     <script>
-        // Mapping of products to 3D models (using placeholder glTF models)
         const productModels = {
             'Fauteuil Moderne': 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
             'Lampe Cuivrée': 'https://modelviewer.dev/shared-assets/models/RobotExpressive.glb',
@@ -436,7 +437,6 @@
             document.getElementById('detail-price').textContent = price;
             document.getElementById('detail-seller').textContent = `Vendu par : ${seller}`;
             
-            // Set 3D model source
             const modelViewer = document.getElementById('product-model');
             modelViewer.src = productModels[title] || '';
             
