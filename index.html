@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twinvault - Profil Modifiable</title>
+    <title>Twinvault - Marketplace Moderne</title>
+    <!-- Import Model Viewer for 3D/AR -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     <style>
         :root {
             --navy-blue: #0A192F;
@@ -224,6 +226,12 @@
         .edit-form button:hover {
             background-color: var(--warm-orange-light);
         }
+
+        model-viewer {
+            width: 100%;
+            height: 350px;
+            background-color: var(--light-bg);
+        }
     </style>
 </head>
 <body>
@@ -241,111 +249,159 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <h1>Boutique d'objets numériques</h1>
-        <p>Explorez les trésors du marché</p>
-    </header>
-
-    <div class="main-container">
-        
+    <div id="app-content">
         <!-- Section Accueil -->
         <section id="home-section">
-            <h2 class="section-title">Articles Populaires</h2>
-            <div class="grid-container">
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1593341646782-e0b195ff086e?q=80&w=500" alt="Chaise Vintage" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Fauteuil Moderne</h3>
-                        <p class="product-seller">Vendu par : DesignExpert</p>
-                        <div class="product-price">150 $</div>
-                    </div>
-                    <a href="#" class="view-btn">Voir l'objet</a>
-                </article>
+            <header class="hero">
+                <h1>Boutique d'objets numériques</h1>
+                <p>Explorez les trésors du marché</p>
+            </header>
 
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2d02?q=80&w=500" alt="Lampe" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Lampe Cuivrée</h3>
-                        <p class="product-seller">Vendu par : LuminaStore</p>
-                        <div class="product-price">85 $</div>
-                    </div>
-                    <a href="#" class="view-btn">Voir l'objet</a>
-                </article>
-
-                <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1549488344-c36746bd6759?q=80&w=500" alt="Cadre Photo" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Art Abstrait</h3>
-                        <p class="product-seller">Vendu par : CanvasArt</p>
-                        <div class="product-price">210 $</div>
-                    </div>
-                    <a href="#" class="view-btn">Voir l'objet</a>
-                </article>
-            </div>
-
-            <section class="checkerboard-accent">
-                <h2 class="section-title" style="border-color: var(--navy-blue);">Mes Favoris Récents</h2>
-                <div class="grid-container" style="margin-bottom: 0;">
+            <div class="main-container">
+                <h2 class="section-title">Articles Populaires</h2>
+                <div class="grid-container">
                     <article class="product-card">
-                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=500" alt="Bureau" class="product-image">
+                        <img src="https://images.unsplash.com/photo-1593341646782-e0b195ff086e?q=80&w=500" alt="Chaise Vintage" class="product-image">
                         <div class="product-info">
-                            <h3 class="product-title">Bureau en Chêne</h3>
-                            <p class="product-seller">Vendu par : WoodWorks</p>
-                            <div class="product-price">320 $</div>
+                            <h3 class="product-title">Fauteuil Moderne</h3>
+                            <p class="product-seller">Vendu par : DesignExpert</p>
+                            <div class="product-price">150 $</div>
                         </div>
-                        <a href="#" class="view-btn">Voir l'objet</a>
+                        <button class="view-btn" onclick="showProductDetails('Fauteuil Moderne', '150 $', 'DesignExpert')">Voir l'objet</button>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2d02?q=80&w=500" alt="Lampe" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Lampe Cuivrée</h3>
+                            <p class="product-seller">Vendu par : LuminaStore</p>
+                            <div class="product-price">85 $</div>
+                        </div>
+                        <button class="view-btn" onclick="showProductDetails('Lampe Cuivrée', '85 $', 'LuminaStore')">Voir l'objet</button>
+                    </article>
+
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1549488344-c36746bd6759?q=80&w=500" alt="Cadre Photo" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Art Abstrait</h3>
+                            <p class="product-seller">Vendu par : CanvasArt</p>
+                            <div class="product-price">210 $</div>
+                        </div>
+                        <button class="view-btn" onclick="showProductDetails('Art Abstrait', '210 $', 'CanvasArt')">Voir l'objet</button>
                     </article>
                 </div>
-            </section>
+
+                <section class="checkerboard-accent">
+                    <h2 class="section-title" style="border-color: var(--navy-blue);">Mes Favoris Récents</h2>
+                    <div class="grid-container" style="margin-bottom: 0;">
+                        <article class="product-card">
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=500" alt="Bureau" class="product-image">
+                            <div class="product-info">
+                                <h3 class="product-title">Bureau en Chêne</h3>
+                                <p class="product-seller">Vendu par : WoodWorks</p>
+                                <div class="product-price">320 $</div>
+                            </div>
+                            <button class="view-btn" onclick="showProductDetails('Bureau en Chêne', '320 $', 'WoodWorks')">Voir l'objet</button>
+                        </article>
+                    </div>
+                </section>
+                
+                <section style="margin-top: 3rem;">
+                    <h2 class="section-title">Créer votre scan 3D</h2>
+                    <p>Déposez vos scans 3D pour les lier avec la réalité augmentée.</p>
+                    <a href="https://polycam.ai" target="_blank" class="view-btn" style="width: 200px;">Visiter Polycam</a>
+                </section>
+            </div>
+        </section>
+
+        <!-- Section Détails du Produit (dynamique) -->
+        <section id="product-details-section" class="hidden">
+            <div class="main-container">
+                <button onclick="showSection('home')" class="view-btn" style="width: 150px; margin-bottom: 1rem;">Retour</button>
+                <div class="product-card">
+                    <!-- Model Viewer Component -->
+                    <model-viewer 
+                        id="product-model"
+                        src="" 
+                        alt="Modèle 3D du produit" 
+                        auto-rotate 
+                        camera-controls 
+                        ar 
+                        ar-modes="webxr scene-viewer quick-look">
+                        <button slot="ar-button" class="view-btn" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);">
+                            Activer la Réalité Augmentée
+                        </button>
+                    </model-viewer>
+                    
+                    <div class="product-info">
+                        <h3 id="detail-title" class="product-title">Nom du produit</h3>
+                        <p id="detail-seller" class="product-seller">Vendu par : Vendor</p>
+                        <div id="detail-price" class="product-price">0 $</div>
+                        <a href="#" id="detail-vendor-link" target="_blank" class="view-btn" style="margin-top: 1rem;">Visiter le site du vendeur</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Section Achats -->
         <section id="achats-section" class="hidden">
-            <h2 class="section-title">Mes Achats</h2>
-            <p>Historique de vos objets acquis.</p>
+            <div class="main-container">
+                <h2 class="section-title">Mes Achats</h2>
+                <p>Historique de vos objets acquis.</p>
+            </div>
         </section>
 
         <!-- Section Ventes -->
         <section id="ventes-section" class="hidden">
-            <h2 class="section-title">Mes Ventes</h2>
-            <p>Suivi des objets que vous avez mis en vente.</p>
+            <div class="main-container">
+                <h2 class="section-title">Mes Ventes</h2>
+                <p>Suivi des objets que vous avez mis en vente.</p>
+            </div>
         </section>
 
         <!-- Section Profil -->
         <section id="profil-section" class="hidden">
-            <h2 class="section-title">Mon Profil</h2>
-            <div class="profile-section">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300" alt="Avatar" id="profile-avatar-display" class="profile-avatar">
-                <h3 id="profile-name-display">Utilisateur Twinvault</h3>
-                <p>Membre depuis 2026</p>
-                <div class="grid-container" style="margin-top: 2rem;">
-                    <div class="product-card" style="padding: 1rem;">
-                        <h4>Acheteurs</h4>
-                        <p>12</p>
+            <div class="main-container">
+                <h2 class="section-title">Mon Profil</h2>
+                <div class="profile-section">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300" alt="Avatar" id="profile-avatar-display" class="profile-avatar">
+                    <h3 id="profile-name-display">Utilisateur Twinvault</h3>
+                    <p>Membre depuis 2026</p>
+                    <div class="grid-container" style="margin-top: 2rem;">
+                        <div class="product-card" style="padding: 1rem;">
+                            <h4>Acheteurs</h4>
+                            <p>12</p>
+                        </div>
+                        <div class="product-card" style="padding: 1rem;">
+                            <h4>Vues</h4>
+                            <p>1 450</p>
+                        </div>
+                        <div class="product-card" style="padding: 1rem;">
+                            <h4>Objets Vendus</h4>
+                            <p>5</p>
+                        </div>
                     </div>
-                    <div class="product-card" style="padding: 1rem;">
-                        <h4>Vues</h4>
-                        <p>1 450</p>
-                    </div>
-                    <div class="product-card" style="padding: 1rem;">
-                        <h4>Objets Vendus</h4>
-                        <p>5</p>
-                    </div>
-                </div>
 
-                <!-- Formulaire de modification -->
-                <div class="edit-form">
-                    <h4>Modifier le profil</h4>
-                    <input type="text" id="new-name" placeholder="Nouveau nom">
-                    <input type="file" id="new-avatar" accept="image/*">
-                    <button onclick="updateProfile()">Enregistrer les modifications</button>
+                    <div class="edit-form">
+                        <h4>Modifier le profil</h4>
+                        <input type="text" id="new-name" placeholder="Nouveau nom">
+                        <input type="file" id="new-avatar" accept="image/*">
+                        <button onclick="updateProfile()">Enregistrer les modifications</button>
+                    </div>
                 </div>
             </div>
         </section>
-
     </div>
 
     <script>
+        // Mapping of products to 3D models (using placeholder glTF models)
+        const productModels = {
+            'Fauteuil Moderne': 'https://modelviewer.dev/shared-assets/models/Astronaut.glb',
+            'Lampe Cuivrée': 'https://modelviewer.dev/shared-assets/models/RobotExpressive.glb',
+            'Art Abstrait': 'https://modelviewer.dev/shared-assets/models/Horse.glb',
+            'Bureau en Chêne': 'https://modelviewer.dev/shared-assets/models/Shishkebab.glb'
+        };
+
         const searchBar = document.getElementById('search-bar');
         const productCards = document.querySelectorAll('.product-card');
 
@@ -363,7 +419,7 @@
         });
 
         function showSection(sectionId) {
-            const sections = ['home', 'achats', 'ventes', 'profil'];
+            const sections = ['home', 'achats', 'ventes', 'profil', 'product-details'];
             
             sections.forEach(id => {
                 const sectionElement = document.getElementById(`${id}-section`);
@@ -373,6 +429,18 @@
                     sectionElement.classList.add('hidden');
                 }
             });
+        }
+
+        function showProductDetails(title, price, seller) {
+            document.getElementById('detail-title').textContent = title;
+            document.getElementById('detail-price').textContent = price;
+            document.getElementById('detail-seller').textContent = `Vendu par : ${seller}`;
+            
+            // Set 3D model source
+            const modelViewer = document.getElementById('product-model');
+            modelViewer.src = productModels[title] || '';
+            
+            showSection('product-details');
         }
 
         function updateProfile() {
