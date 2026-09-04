@@ -39,14 +39,18 @@
             letter-spacing: 2px;
         }
 
-        .nav-links a {
+        .nav-links button {
             color: var(--white);
-            text-decoration: none;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
             margin: 0 1rem;
             transition: color 0.3s;
+            font-family: inherit;
         }
 
-        .nav-links a:hover {
+        .nav-links button:hover {
             color: var(--warm-orange-light);
         }
 
@@ -174,6 +178,23 @@
         .hidden {
             display: none;
         }
+
+        .profile-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--gold);
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -181,10 +202,10 @@
     <nav class="navbar">
         <div class="logo">Twinvault</div>
         <div class="nav-links">
-            <a href="#">Accueil</a>
-            <a href="#">Achats</a>
-            <a href="#">Ventes</a>
-            <a href="#">Profil</a>
+            <button onclick="showSection('home')">Accueil</button>
+            <button onclick="showSection('achats')">Achats</button>
+            <button onclick="showSection('ventes')">Ventes</button>
+            <button onclick="showSection('profil')">Profil</button>
         </div>
         <div class="search-container">
             <input type="text" id="search-bar" class="search-bar" placeholder="Rechercher...">
@@ -198,51 +219,90 @@
 
     <div class="main-container">
         
-        <h2 class="section-title">Articles Populaires</h2>
-        <div class="grid-container">
-            <article class="product-card">
-                <img src="https://images.unsplash.com/photo-1593341646782-e0b195ff086e?q=80&w=500&auto=format&fit=crop" alt="Chaise Vintage" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Fauteuil Moderne</h3>
-                    <p class="product-seller">Vendu par : DesignExpert</p>
-                    <div class="product-price">150 $</div>
-                </div>
-                <a href="#" class="view-btn">Voir l'objet</a>
-            </article>
-
-            <article class="product-card">
-                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2d02?q=80&w=500&auto=format&fit=crop" alt="Lampe" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Lampe Cuivrée</h3>
-                    <p class="product-seller">Vendu par : LuminaStore</p>
-                    <div class="product-price">85 $</div>
-                </div>
-                <a href="#" class="view-btn">Voir l'objet</a>
-            </article>
-
-            <article class="product-card">
-                <img src="https://images.unsplash.com/photo-1549488344-c36746bd6759?q=80&w=500&auto=format&fit=crop" alt="Cadre Photo" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Art Abstrait</h3>
-                    <p class="product-seller">Vendu par : CanvasArt</p>
-                    <div class="product-price">210 $</div>
-                </div>
-                <a href="#" class="view-btn">Voir l'objet</a>
-            </article>
-        </div>
-
-        <section class="checkerboard-accent">
-            <h2 class="section-title" style="border-color: var(--navy-blue);">Mes Favoris Récents</h2>
-            <div class="grid-container" style="margin-bottom: 0;">
+        <!-- Section Accueil -->
+        <section id="home-section">
+            <h2 class="section-title">Articles Populaires</h2>
+            <div class="grid-container">
                 <article class="product-card">
-                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=500&auto=format&fit=crop" alt="Bureau" class="product-image">
+                    <img src="https://images.unsplash.com/photo-1593341646782-e0b195ff086e?q=80&w=500" alt="Chaise Vintage" class="product-image">
                     <div class="product-info">
-                        <h3 class="product-title">Bureau en Chêne</h3>
-                        <p class="product-seller">Vendu par : WoodWorks</p>
-                        <div class="product-price">320 $</div>
+                        <h3 class="product-title">Fauteuil Moderne</h3>
+                        <p class="product-seller">Vendu par : DesignExpert</p>
+                        <div class="product-price">150 $</div>
                     </div>
                     <a href="#" class="view-btn">Voir l'objet</a>
                 </article>
+
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2d02?q=80&w=500" alt="Lampe" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Lampe Cuivrée</h3>
+                        <p class="product-seller">Vendu par : LuminaStore</p>
+                        <div class="product-price">85 $</div>
+                    </div>
+                    <a href="#" class="view-btn">Voir l'objet</a>
+                </article>
+
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1549488344-c36746bd6759?q=80&w=500" alt="Cadre Photo" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Art Abstrait</h3>
+                        <p class="product-seller">Vendu par : CanvasArt</p>
+                        <div class="product-price">210 $</div>
+                    </div>
+                    <a href="#" class="view-btn">Voir l'objet</a>
+                </article>
+            </div>
+
+            <section class="checkerboard-accent">
+                <h2 class="section-title" style="border-color: var(--navy-blue);">Mes Favoris Récents</h2>
+                <div class="grid-container" style="margin-bottom: 0;">
+                    <article class="product-card">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=500" alt="Bureau" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Bureau en Chêne</h3>
+                            <p class="product-seller">Vendu par : WoodWorks</p>
+                            <div class="product-price">320 $</div>
+                        </div>
+                        <a href="#" class="view-btn">Voir l'objet</a>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+        <!-- Section Achats -->
+        <section id="achats-section" class="hidden">
+            <h2 class="section-title">Mes Achats</h2>
+            <p>Historique de vos objets acquis.</p>
+        </section>
+
+        <!-- Section Ventes -->
+        <section id="ventes-section" class="hidden">
+            <h2 class="section-title">Mes Ventes</h2>
+            <p>Suivi des objets que vous avez mis en vente.</p>
+        </section>
+
+        <!-- Section Profil -->
+        <section id="profil-section" class="hidden">
+            <h2 class="section-title">Mon Profil</h2>
+            <div class="profile-section">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300" alt="Avatar" class="profile-avatar">
+                <h3>Utilisateur Twinvault</h3>
+                <p>Membre depuis 2026</p>
+                <div class="grid-container" style="margin-top: 2rem;">
+                    <div class="product-card" style="padding: 1rem;">
+                        <h4>Acheteurs</h4>
+                        <p>12</p>
+                    </div>
+                    <div class="product-card" style="padding: 1rem;">
+                        <h4>Vues</h4>
+                        <p>1 450</p>
+                    </div>
+                    <div class="product-card" style="padding: 1rem;">
+                        <h4>Objets Vendus</h4>
+                        <p>5</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -264,6 +324,19 @@
                 }
             });
         });
+
+        function showSection(sectionId) {
+            const sections = ['home', 'achats', 'ventes', 'profil'];
+            
+            sections.forEach(id => {
+                const sectionElement = document.getElementById(`${id}-section`);
+                if (id === sectionId) {
+                    sectionElement.classList.remove('hidden');
+                } else {
+                    sectionElement.classList.add('hidden');
+                }
+            });
+        }
     </script>
 </body>
 </html>
