@@ -170,6 +170,10 @@
             padding: 1rem;
             border-radius: 8px;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -183,7 +187,7 @@
             <a href="#">Profil</a>
         </div>
         <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Rechercher...">
+            <input type="text" id="search-bar" class="search-bar" placeholder="Rechercher...">
         </div>
     </nav>
 
@@ -243,5 +247,23 @@
         </section>
 
     </div>
+
+    <script>
+        const searchBar = document.getElementById('search-bar');
+        const productCards = document.querySelectorAll('.product-card');
+
+        searchBar.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            productCards.forEach(card => {
+                const title = card.querySelector('.product-title').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
