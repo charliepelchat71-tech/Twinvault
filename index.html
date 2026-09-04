@@ -6,98 +6,242 @@
     <title>Twinvault - Marketplace Moderne</title>
     <style>
         :root {
-            --primary: #6B46C1; /* Mauve */
-            --secondary: #3182CE; /* Bleu */
-            --dark: #1A202C;
-            --light: #F7FAFC;
+            --navy-blue: #0A192F;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+            --light-bg: #F0F4F8;
+            --dark-text: #172B4D;
+            --warm-orange-light: #FF9F1C;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--light-bg);
+            color: var(--dark-text);
         }
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 1rem;
+
+        .navbar {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--warm-orange-light);
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-bar {
+            padding: 0.6rem 1rem;
+            border-radius: 5px;
+            border: none;
+            width: 250px;
+            background-color: var(--white);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--gold) 100%);
+            color: var(--white);
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 4rem 1rem;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.2);
         }
-        h1 {
+
+        .hero h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .container {
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: var(--light-bg);
+        }
+
+        .main-container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-        .grid {
+
+        .section-title {
+            font-size: 1.8rem;
+            border-left: 5px solid var(--warm-orange-light);
+            padding-left: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
-        .card {
-            background: white;
-            border-radius: 8px;
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .card:hover {
-            transform: translateY(-5px);
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(255, 159, 28, 0.15);
         }
-        .card img {
+
+        .product-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
-        .card-content {
+
+        .product-info {
             padding: 1.5rem;
         }
-        .card-title {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.25rem;
-            color: var(--primary);
+
+        .product-title {
+            font-size: 1.3rem;
+            margin: 0;
+            color: var(--navy-blue);
         }
-        .card-price {
+
+        .product-seller {
+            font-size: 0.9rem;
+            color: #7A8B9E;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
             font-weight: bold;
-            color: var(--secondary);
+            color: var(--gold);
+        }
+
+        .view-btn {
+            display: block;
+            text-align: center;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 0.8rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .view-btn:hover {
+            background-color: var(--warm-orange-light);
+        }
+
+        .checkerboard-accent {
+            background-image: 
+                linear-gradient(45deg, #F0F4F8 25%, transparent 25%), 
+                linear-gradient(-45deg, #F0F4F8 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #F0F4F8 75%), 
+                linear-gradient(-45deg, transparent 75%, #F0F4F8 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+            padding: 1rem;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenue sur Twinvault</h1>
-        <p>Votre place de marché moderne</p>
-    </header>
-    <div class="container">
-        <h2>Nos Articles</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="https://via.placeholder.com/250" alt="Meuble">
-                <div class="card-content">
-                    <h3 class="card-title">Fauteuil Moderne</h3>
-                    <p class="card-price">150 $</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250" alt="Télévision">
-                <div class="card-content">
-                    <h3 class="card-title">Télévision 4K</h3>
-                    <p class="card-price">500 $</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/250" alt="Table">
-                <div class="card-content">
-                    <h3 class="card-title">Table en bois</h3>
-                    <p class="card-price">80 $</p>
-                </div>
-            </div>
+
+    <nav class="navbar">
+        <div class="logo">Twinvault</div>
+        <div class="nav-links">
+            <a href="#">Accueil</a>
+            <a href="#">Achats</a>
+            <a href="#">Ventes</a>
+            <a href="#">Profil</a>
         </div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Rechercher...">
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Boutique d'objets numériques</h1>
+        <p>Explorez les trésors du marché</p>
+    </header>
+
+    <div class="main-container">
+        
+        <h2 class="section-title">Articles Populaires</h2>
+        <div class="grid-container">
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1593341646782-e0b195ff086e?q=80&w=500&auto=format&fit=crop" alt="Chaise Vintage" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Fauteuil Moderne</h3>
+                    <p class="product-seller">Vendu par : DesignExpert</p>
+                    <div class="product-price">150 $</div>
+                </div>
+                <a href="#" class="view-btn">Voir l'objet</a>
+            </article>
+
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2d02?q=80&w=500&auto=format&fit=crop" alt="Lampe" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Lampe Cuivrée</h3>
+                    <p class="product-seller">Vendu par : LuminaStore</p>
+                    <div class="product-price">85 $</div>
+                </div>
+                <a href="#" class="view-btn">Voir l'objet</a>
+            </article>
+
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1549488344-c36746bd6759?q=80&w=500&auto=format&fit=crop" alt="Cadre Photo" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Art Abstrait</h3>
+                    <p class="product-seller">Vendu par : CanvasArt</p>
+                    <div class="product-price">210 $</div>
+                </div>
+                <a href="#" class="view-btn">Voir l'objet</a>
+            </article>
+        </div>
+
+        <section class="checkerboard-accent">
+            <h2 class="section-title" style="border-color: var(--navy-blue);">Mes Favoris Récents</h2>
+            <div class="grid-container" style="margin-bottom: 0;">
+                <article class="product-card">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=500&auto=format&fit=crop" alt="Bureau" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Bureau en Chêne</h3>
+                        <p class="product-seller">Vendu par : WoodWorks</p>
+                        <div class="product-price">320 $</div>
+                    </div>
+                    <a href="#" class="view-btn">Voir l'objet</a>
+                </article>
+            </div>
+        </section>
+
     </div>
 </body>
 </html>
